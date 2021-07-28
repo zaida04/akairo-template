@@ -1,14 +1,14 @@
-import { Listener } from "discord-akairo";
+import { Listener } from 'discord-akairo';
 
 export default class Ready extends Listener {
-    public constructor() {
-        super("ready", {
-            emitter: "client",
-            event: "ready",
-        });
-    }
+	public constructor() {
+		super('ready', {
+			emitter: 'client',
+			event: 'ready'
+		});
+	}
 
-    public exec() {
-        this.client.Logger.log(`Bot logged in as ${this.client.user!.tag}`);
-    }
+	public exec() {
+		this.client.logger.log(`Bot logged in as ${this.client.user!.tag}`);
+	}
 }
