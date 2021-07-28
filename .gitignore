@@ -1,6 +1,7 @@
 node_modules/
 dist/
-.vscode/
-
-*.sqlite3
-.env
+data/
+*.env
+.parcel-cache/
+packed/
+.cache/

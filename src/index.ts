@@ -1,14 +1,16 @@
-import Client from "./core/client/Client";
-import { config } from "dotenv";
-import { ClientOptions } from "./typings/ClientOptions";
+import Client from './core/client/Client';
+import { config } from 'dotenv';
+import { ClientOptions } from './typings';
 config();
 
-if (!process.env.DEFAULTPREFIX) throw new Error("Must provide a prefix!");
-if (!process.env.TOKEN) throw new Error("Must provide a token");
+['DEFAULTPREFIX', 'TOKEN'].forEach((x) => {
+	if (!process.env[x]) throw new Error(`Missing ${x} env variable!`);
+});
 
 const options: ClientOptions = {
-    defaultPrefix: process.env.DEFAULTPREFIX,
+	defaultPrefix: process.env.DEFAULTPREFIX!,
+	ownerId: process.env.OWNERID
 };
 
 const BotClient = new Client(options);
-void BotClient.login(process.env.TOKEN);
+void BotClient.login(process.env.TOKEN!);
